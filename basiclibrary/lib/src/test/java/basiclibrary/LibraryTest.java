@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
+
     @Test
     public void testRoll() {
         int[] rolledArray = Library.roll(4);
@@ -44,4 +45,5 @@ class LibraryTest {
         assertArrayEquals(weeklyMonthTemperatures[2], Library.arraysOfArrays(weeklyMonthTemperatures));
     }
 }
+
 
