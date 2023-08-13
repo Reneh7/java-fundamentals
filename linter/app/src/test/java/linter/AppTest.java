@@ -3,62 +3,58 @@ package linter;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
     @Test
     void testNoErrors() {
-        try {
-            JavaScriptLinter("src/test/resources/no_errors.js"); // Adjust the path to the test file
-        } catch (FileNotFoundException e) {
-            fail("Test file not found.");
-        }
+        String filePath = "C:/Users/User/java-fundamentals/linter/app/src/test/resources/noError.js";
+        var fileTest1 = new App();
+
+        assertDoesNotThrow(() -> {
+            fileTest1.jsLinter(filePath);
+        });
     }
 
     @Test
     void testOneError() {
-        try {
-            JavaScriptLinter("src/test/resources/one_error.js"); // Adjust the path to the test file
-        } catch (FileNotFoundException e) {
-            fail("Test file not found.");
-        }
+        String filePath="C:\\Users\\User\\java-fundamentals\\linter\\app\\src\\test\\resources\\oneError.js";
+        var fileTest2= new App();
+        assertDoesNotThrow(() -> {
+            fileTest2.jsLinter(filePath);});
     }
 
     @Test
     void testFewErrors() {
-        try {
-            JavaScriptLinter("src/test/resources/few_errors.js"); // Adjust the path to the test file
-        } catch (FileNotFoundException e) {
-            fail("Test file not found.");
-        }
+        String filePath="C:\\Users\\User\\java-fundamentals\\linter\\app\\src\\test\\resources\\fewErrors.js";
+        var fileTest3= new App();
+        assertDoesNotThrow(() -> {
+            fileTest3.jsLinter(filePath);});
     }
 
     @Test
     void testManyErrors() {
-        try {
-            JavaScriptLinter("src/test/resources/many_errors.js"); // Adjust the path to the test file
-        } catch (FileNotFoundException e) {
-            fail("Test file not found.");
-        }
+        String filePath="C:\\Users\\User\\java-fundamentals\\linter\\app\\src\\main\\resources\\gates.js";
+        var fileTest4= new App();
+        assertDoesNotThrow(() -> {
+            fileTest4.jsLinter(filePath);});
+
     }
 
     @Test
-    void testEmptyFile() {
-        try {
-            JavaScriptLinter("src/test/resources/empty_file.js"); // Adjust the path to the test file
-        } catch (FileNotFoundException e) {
-            fail("Test file not found.");
-        }
-    }
+    public void testEmptyFile() {
+        String filePath="C:/Users/User/java-fundamentals/linter/app/src/test/resources/empty.js";
+        var fileTest5= new App();
 
-    // Replace the following method with the actual linter method from your App class
-    private void JavaScriptLinter(String path) throws FileNotFoundException {
-        // Your linter implementation goes here
-        // Make sure to handle the linter logic and report errors as specified
-        // Use the provided path to read the JavaScript file
-        // You can implement similar logic to what you have in your App.JavaScriptLinter method
-        // ... (implementation details)
+        assertDoesNotThrow(() -> {
+            fileTest5.jsLinter(filePath);});
     }
 }
+
+
+
