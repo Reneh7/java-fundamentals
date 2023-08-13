@@ -54,7 +54,7 @@ public class Library
         votes.add("Bush");
 
         String winner = tally(votes);
-        System.out.println(winner + " received the most votes!");
+        System.out.println(winner);
     }
 
 //    public static int[] roll(int n) {
@@ -153,7 +153,7 @@ public class Library
             low++;
         }
         String result = "High:" + max + "\nLow:" + min + "\n"+ missingTemperatures ;
-        return result;
+        return result ;
     }
 
     //**************************************************************************************
@@ -170,6 +170,6 @@ public class Library
                 winner = name;
             }
         }
-        return winner;
+        return winner + " received the most votes!";
     }
 }

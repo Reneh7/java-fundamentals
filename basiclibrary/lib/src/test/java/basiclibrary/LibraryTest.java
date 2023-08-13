@@ -53,26 +53,46 @@ class LibraryTest {
 //        assertArrayEquals(weeklyMonthTemperatures[2], Library.arraysOfArrays(weeklyMonthTemperatures));
 //    }
 
-    public void testAnalyzingWeather() {
+    @Test
+    public void testAnalyzingWeather()
+    {
+       var analysis= new Library();
+
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
                 {57, 65, 65, 70, 72, 65, 51},
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
         };
+        int max=72;
+        int min=51;
+        String missingTemperatures = "\nNever saw temperatures: 63 \n" +
+                "Never saw temperatures: 67 \n" +
+                "Never saw temperatures: 68 \n" +
+                "Never saw temperatures: 69 ";
 
-        String expected = "High:72\nLow:51\nNever saw temperatures: 63 67 68 69";
-        String result = Library.analyzingWeather(weeklyMonthTemperatures);
+       assertEquals( "High:" + max + "\nLow:" + min + "\n"+ missingTemperatures ,analysis.analyzingWeather(weeklyMonthTemperatures));
+    };
 
-        assertEquals(expected, result);
-    }
+
+
 
     @Test
-    public void testTally() {
-        List<String> votes = new ArrayList<>(Arrays.asList("Bush", "Bush", "Bush", "Shrub", "Hedge", "Shrub", "Bush", "Hedge", "Bush"));
-        String expectedWinner = "Bush";
-        String winner = Library.tally(votes);
-        assertEquals(expectedWinner, winner);
+    public void testTally()
+    {
+       var winner= new Library();
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        assertEquals( "Bush received the most votes!",winner.tally(votes));
     }
 }
 
