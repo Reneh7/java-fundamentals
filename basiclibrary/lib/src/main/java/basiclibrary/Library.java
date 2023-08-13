@@ -3,102 +3,173 @@
  */
 package basiclibrary;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Library
 {
     public static void main(String[] args) {
 
-        roll(4);
+//        roll(4);
 
         //**************************************************************************************
-        int[] array= {1 ,1 ,2};
-        System.out.println(containsDuplicates(array));
+//        int[] array= {1 ,1 ,2};
+//        System.out.println(containsDuplicates(array));
 
         //**************************************************************************************
 
-        int[] array2 = {30,30,30};
-        System.out.println(calculateAverage(array2));
+//        int[] array2 = {30,30,30};
+//        System.out.println(calculateAverage(array2));
 
         //**************************************************************************************
+//        int[][] weeklyMonthTemperatures = {
+//                {66, 64, 58, 65, 71, 57, 60},
+//                {57, 65, 65, 70, 72, 65, 51},
+//                {55, 54, 60, 53, 59, 57, 61},
+//                {65, 56, 55, 52, 55, 62, 57}
+//        };
+//
+//        System.out.println(Arrays.toString(arraysOfArrays(weeklyMonthTemperatures)));
+
+        //**************************************************************************************
+
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
                 {57, 65, 65, 70, 72, 65, 51},
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
         };
-
-        System.out.println(Arrays.toString(arraysOfArrays(weeklyMonthTemperatures)));
+        System.out.println(analyzingWeather(weeklyMonthTemperatures));
 
         //**************************************************************************************
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        String winner = tally(votes);
+        System.out.println(winner + " received the most votes!");
     }
 
-    public static int[] roll(int n) {
-        int[] array = new int[n];
-        System.out.print("[");
-        for (int i = 0; i < n; i++) {
-            int result = (int) (Math.random() * 6) + 1;
-            array[i] = result;
-            System.out.print(result);
-            if (i < n - 1) {
-                System.out.print(", ");
+//    public static int[] roll(int n) {
+//        int[] array = new int[n];
+//        System.out.print("[");
+//        for (int i = 0; i < n; i++) {
+//            int result = (int) (Math.random() * 6) + 1;
+//            array[i] = result;
+//            System.out.print(result);
+//            if (i < n - 1) {
+//                System.out.print(", ");
+//            }
+//        }
+//        System.out.println("]");
+//        return array;
+//    }
+//
+//    //**************************************************************************************
+//
+//    public static boolean containsDuplicates(int[] array)
+//    {
+//        for(int i=0; i< array.length - 1; i++)
+//        {
+//            for (int j = i + 1; j < array.length; j++)
+//            {
+//                if(array[i] == array[j]) return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//
+//    //**************************************************************************************
+//
+//    public static double calculateAverage(int[] array2)
+//    {
+//        double summation = 0;
+//
+//        for (int i = 0; i < array2.length; i++)
+//        {
+//            summation += array2[i];
+//        }
+//
+//        double average= summation / array2.length;
+//        return average;
+//    }
+//
+//    //**************************************************************************************
+//
+//    public static int[] arraysOfArrays(int[][] array)
+//    {
+//        int minAvg = Integer.MAX_VALUE;
+//        int minIndex = -1;
+//        for(int i=0; i < array.length; i++)
+//        {
+//            int summation = 0;
+//            for(int j=0; j < array[i].length; j++)
+//            {
+//                summation += array[i][j];
+//            }
+//            int average= summation / array[i].length;
+//            if (average < minAvg)
+//            {
+//                minAvg = average;
+//                minIndex = i;
+//            }
+//        }
+//        return array[minIndex];
+// }
+
+    //**************************************************************************************
+
+    public static String analyzingWeather(int array[][]) {
+        Set<Integer> uniqueTem = new HashSet<>();
+        int min = array[0][0];
+        int max = array[0][0];
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                uniqueTem.add(array[i][j]);
+
+                if ( min > array[i][j]) {
+                    min = array[i][j];
+                }
+                if ( max < array[i][j]) {
+                    max = array[i][j];
+                }
             }
         }
-        System.out.println("]");
-        return array;
+        String missingTemperatures = "";
+        int low=min;
+        while (low <= max) {
+            if (!uniqueTem.contains(low)) {
+                missingTemperatures += "\nNever saw temperatures: " +low + " ";
+            }
+            low++;
+        }
+        String result = "High:" + max + "\nLow:" + min + "\n"+ missingTemperatures ;
+        return result;
     }
 
     //**************************************************************************************
 
-    public static boolean containsDuplicates(int[] array)
+    public static String tally(List<String> names)
     {
-        for(int i=0; i< array.length - 1; i++)
-        {
-            for (int j = i + 1; j < array.length; j++)
-            {
-                if(array[i] == array[j]) return true;
+        HashMap<String,Integer> nameCounts= new HashMap<>();
+        int maxVotes=0;
+        String winner = "";
+        for (String name : names) {
+            nameCounts.put(name, nameCounts.getOrDefault(name, 0) + 1);
+            if (nameCounts.get(name) > maxVotes) {
+                maxVotes = nameCounts.get(name);
+                winner = name;
             }
         }
-        return false;
-    }
-
-
-    //**************************************************************************************
-
-    public static double calculateAverage(int[] array2)
-    {
-        double summation = 0;
-
-        for (int i = 0; i < array2.length; i++)
-        {
-            summation += array2[i];
-        }
-
-        double average= summation / array2.length;
-        return average;
-    }
-
-    //**************************************************************************************
-
-    public static int[] arraysOfArrays(int[][] array)
-    {
-        int minAvg = Integer.MAX_VALUE;
-        int minIndex = -1;
-        for(int i=0; i < array.length; i++)
-        {
-            int summation = 0;
-            for(int j=0; j < array[i].length; j++)
-            {
-                summation += array[i][j];
-            }
-            int average= summation / array[i].length;
-            if (average < minAvg)
-            {
-                minAvg = average;
-                minIndex = i;
-            }
-        }
-        return array[minIndex];
-
+        return winner;
     }
 }
