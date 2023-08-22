@@ -34,4 +34,13 @@ Functions Used in this lab:
 [linterTesting](./linter/app/src/test/java/linter/AppTest.java)
 
 
+## *Lab-06*
+
+Classes Used in this lab:
+- Library
+- Restaurant
+- Review
+[ReadMe File](./inheritance/lib/src/main/java/inheritance)
+
+
 
