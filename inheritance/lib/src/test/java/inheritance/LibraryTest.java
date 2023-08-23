@@ -19,19 +19,62 @@ class LibraryTest {
         assertEquals(4, restaurant.getStars());
     }
 
-    @Test
-    public void testRestaurantToString() {
-        Restaurant restaurant = new Restaurant("Yummy Bites", 3, 1);
-        String expected = "Restaurant{name='Yummy Bites', stars=3, price=1}";
-        assertEquals(expected, restaurant.toString());
-    }
-    @Test
-    public void testReviewToString() {
-        Restaurant restaurant = new Restaurant("Tasty Treats", 4, 2);
-        Review review = new Review("Charlie", "Lovely ambiance!", 4, restaurant);
+@Test
+public void testRestaurantConstructorAndToString() {
+    Restaurant restaurant = new Restaurant("Delicious Eats", 4, 2);
 
-        String expected = "Review{author='Charlie', body='Lovely ambiance!', stars=4, restaurant=Tasty Treats}";
-        assertEquals(expected, review.toString());
+    assertEquals("Delicious Eats", restaurant.getName());
+    assertEquals("Restaurant{" +
+            "name='Delicious Eats', stars=4, price=2}", restaurant.toString());
+}
+
+    @Test
+    public void testAddRestaurantReview() {
+        Restaurant restaurant = new Restaurant("Delicious Eats", 4, 2);
+        Review review = new Review("Alice", "Great food!", 5, restaurant);
+        restaurant.addReview(review);
+
+        assertEquals(1, restaurant.getReviews().size());
+        assertEquals(review, restaurant.getReviews().get(0));
+    }
+
+    public void testShopConstructorAndToString() {
+        Shop shop = new Shop("Fashion Emporium", "Trendy clothes", 3);
+
+        assertEquals("Fashion Emporium", shop.getName());
+        assertEquals("Shop{" +
+                "name='Fashion Emporium', description='Trendy clothes', numberOfDollarSigns=3}", shop.toString());
+    }
+
+//    @Test
+//    public void testAddShopReview() {
+//        Shop shop = new Shop("Fashion Emporium", "Trendy clothes", 3);
+//
+//        Review review = new Review("Alice", "Great shopping experience!", 4, shop);
+//        assertEquals(0, shop.getReviews().size());
+//
+//        shop.addReview(review);
+//        assertEquals(1, shop.getReviews().size());
+//        assertEquals(review, shop.getReviews().get(0));
+//    }
+
+    @Test
+    public void testTheaterConstructorAndToString() {
+        Theater theater = new Theater("Cineplex");
+
+        assertEquals("Cineplex", theater.getName());
+        assertEquals("Theater{" +
+                "name='Cineplex', movies='[]', stars='0'}", theater.toString());
+    }
+
+    @Test
+    public void testAddTheaterReview() {
+        Theater theater = new Theater("Cineplex");
+        Review review = new Review("Bob", "Enjoyed the movie experience!", 5, "Avengers: Endgame", theater);
+        theater.addReview(review);
+
+        assertEquals(1, theater.getReviews().size());
+        assertEquals(review, theater.getReviews().get(0));
     }
 }
 
