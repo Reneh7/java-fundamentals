@@ -42,5 +42,15 @@ Classes Used in this lab:
 - Review
 [ReadMe File](./inheritance/lib/src/main/java/inheritance)
 
+## *Lab-07*
+
+Classes Used in this lab:
+- Library
+- Restaurant
+- Review
+- Theater
+- Shop
+[ReadMe File](./inheritance/lib/src/main/java/inheritance/READMELab7.md)
+
 
 
