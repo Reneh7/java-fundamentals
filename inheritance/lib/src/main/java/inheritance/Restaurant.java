@@ -3,7 +3,7 @@ package inheritance;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurant {
+public class Restaurant  {
     private String name;
     private int stars;
     private int price;
@@ -40,6 +40,9 @@ public class Restaurant {
         stars = totalStars / reviews.size();
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
 
     @Override
     public String toString() {
