@@ -57,12 +57,11 @@ public class Review {
 
         return "Review{" +
                 "body='" + body + '\'' +
-        ", author='" + author + '\'' +
-        ", numberOfStars=" + numberOfStars +
+                ", author='" + author + '\'' +
+                ", numberOfStars=" + numberOfStars +
                 ", Place=" + establishmentName + movieInfo +
                 '}';
     }
-
 }
 
 
