@@ -29,6 +29,11 @@ It features attributes such as the author's name, review content, star rating,
 and a reference to the associated establishment (restaurant, theater, or shop).
 This class supports the comprehensive representation of reviews across different types of establishments.
 
+## CommonMethods
+
+The CommonMethods class serves as a base class for other classes, specifically the Restaurant, Shop, and Theater classes.
+This class encapsulates common attributes and behavior that these derived classes share like updateStars(),addReview() and getName().
+
 ### LibraryTest Class
 
 The LibraryTest class serves as the backbone of quality assurance, offering JUnit tests that validate the correct functionality of the Restaurant,
