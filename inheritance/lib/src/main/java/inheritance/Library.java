@@ -15,15 +15,16 @@ public class Library {
         theater.removeMovie("The Lion King");
 
         Review review1 = new Review("Alice", "Great food!", 5, restaurant);
-        Review review2 = new Review("Bob", "Nice clothes collection.", 4, shop);
-        Review review3 = new Review("Charlie", "Amazing movie!", 5, "Avengers: Endgame", theater);
+        Review review2 = new Review("Jack", "Amazing food!", 3, restaurant);
+        Review review3 = new Review("Bob", "Nice clothes collection.", 4, shop);
+        Review review4 = new Review("Charlie", "Amazing movie!", 5, "Avengers: Endgame", theater);
         Review review5 = new Review("John", "Amazing movie!", 4, theater);
-        Review review4 = new Review("Jack", "Amazing food!", 3, restaurant);
+
 
         restaurant.addReview(review1);
-        restaurant.addReview(review4);
-        shop.addReview(review2);
-        theater.addReview(review3);
+        restaurant.addReview(review2);
+        shop.addReview(review3);
+        theater.addReview(review4);
         theater.addReview(review5);
 
         System.out.println(restaurant);
